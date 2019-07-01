@@ -1,0 +1,22 @@
+// Version of protobuf language that is used
+syntax = "proto3";
+
+// Option to enable the generation of separate files for different classes
+// This will put each "message" type from the .proto file into an independent .java file
+option java_multiple_files = true;
+package com.codenotfound.grpc.helloworld;
+
+message Person {
+    string first_name = 1;
+    string last_name = 2;
+}
+
+message Greeting {
+    string message = 1;
+}
+
+// Service definition
+service HelloWorldService {
+    // RPC method, takes "person" message from the client and returns a "greeting" from the server
+    rpc sayHello (Person) returns (Greeting);
+}
